@@ -4,5 +4,30 @@
         <file>icons/caps-lock-off.png</file>
         <file>icons/caps-lock-on.png</file>
         <file>icons/hide-arrow.png</file>
+        <file>qml/AlternativeKeysPopup.qml</file>
+        <file>qml/BackspaceKey.qml</file>
+        <file>qml/CsLayout.qml</file>
+        <file>qml/DeLayout.qml</file>
+        <file>qml/DigitsLayout.qml</file>
+        <file>qml/ElLayout.qml</file>
+        <file>qml/EnLayout.qml</file>
+        <file>qml/EnterKey.qml</file>
+        <file>qml/EsLayout.qml</file>
+        <file>qml/FrLayout.qml</file>
+        <file>qml/HideKey.qml</file>
+        <file>qml/InputPanel.qml</file>
+        <file>qml/ItLayout.qml</file>
+        <file>qml/Key.qml</file>
+        <file>qml/KeyModel.qml</file>
+        <file>qml/KeyPopup.qml</file>
+        <file>qml/NlLayout.qml</file>
+        <file>qml/PlLayout.qml</file>
+        <file>qml/PtLayout.qml</file>
+        <file>qml/qmldir</file>
+        <file>qml/QwertyLayout.qml</file>
+        <file>qml/ShiftKey.qml</file>
+        <file>qml/SpaceKey.qml</file>
+        <file>qml/SymbolKey.qml</file>
+        <file>qml/SymbolLayout.qml</file>
     </qresource>
 </RCC>

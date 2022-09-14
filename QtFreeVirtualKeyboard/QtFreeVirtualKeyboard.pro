@@ -24,16 +24,22 @@ HEADERS += \
 RESOURCES += \
     resources.qrc
 
-QML_FILES += \
-    qml/qmldir \
-    qml/*.qml
+#QML_FILES += \
+#    qml/qmldir \
+#    qml/*.qml
 
-OTHER_FILES += $$QML_FILES
+#OTHER_FILES += $$QML_FILES
 
-INSTALLS += \
-    target \
-    deployment
+#INSTALLS += \
+#    target \
+#    deployment
 
-deployment.files = $$QML_FILES
-deployment.path = $$[QT_INSTALL_QML]/QtQuick/FreeVirtualKeyboard
-target.path = $$[QT_INSTALL_PLUGINS]/platforminputcontexts
+#deployment.files = $$QML_FILES
+#deployment.path = $$[QT_INSTALL_QML]/QtQuick/FreeVirtualKeyboard
+#target.path = $$[QT_INSTALL_PLUGINS]/platforminputcontexts
+
+unix
+{
+    target.path = /home/root/lib/plugins/platforminputcontexts
+    INSTALLS += target
+}
