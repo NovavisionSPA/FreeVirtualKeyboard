@@ -1,6 +1,6 @@
 import QtQuick 2.0
 import QtQml 2.0
-import QtQuick.Layouts 1.12
+import QtQuick.Layouts 1.3
 
 Loader {
     property var inputPanel
