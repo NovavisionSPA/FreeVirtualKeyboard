@@ -28,5 +28,6 @@
         <file>qml/SpaceKey.qml</file>
         <file>qml/SymbolKey.qml</file>
         <file>qml/SymbolLayout.qml</file>
+        <file>qml/qmldir</file>
     </qresource>
 </RCC>
