@@ -23,7 +23,6 @@
         <file>qml/NlLayout.qml</file>
         <file>qml/PlLayout.qml</file>
         <file>qml/PtLayout.qml</file>
-        <file>qml/qmldir</file>
         <file>qml/QwertyLayout.qml</file>
         <file>qml/ShiftKey.qml</file>
         <file>qml/SpaceKey.qml</file>
