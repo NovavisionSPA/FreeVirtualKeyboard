@@ -29,7 +29,19 @@ Button {
     property bool showPreview: true
     property bool functionKey: false
 
-    focusPolicy: Qt.NoFocus
+    property var rightKey
+    property var leftKey
+
+    Keys.onRightPressed: rightKey.forceActiveFocus()
+    Keys.onLeftPressed: leftKey.forceActiveFocus()
+
+    onFocusChanged: {
+        if (focus) {
+            txtColor = "#ff0000"
+        } else {
+            txtColor = "#00ff00"
+        }
+    }
 
     Layout.minimumWidth: key.implicitWidth
     Layout.minimumHeight: key.implicitHeight
@@ -103,11 +115,21 @@ Button {
     }
 
     onReleased: {
+        inputPanel.focusObj.forceActiveFocus()
         if (!functionKey) {
             InputEngine.virtualKeyClick(
-                        btnKey, InputEngine.uppercase ? btnText.toUpperCase(
-                                                            ) : btnText,
+                        btnKey, InputEngine.uppercase ? btnText.toUpperCase() : btnText,
                         InputEngine.uppercase ? Qt.ShiftModifier : 0)
         }
+    }
+
+    Keys.onReleased: {
+        inputPanel.focusObj.forceActiveFocus()
+        if (!functionKey) {
+            InputEngine.virtualKeyClick(
+                        btnKey, InputEngine.uppercase ? btnText.toUpperCase() : btnText,
+                        InputEngine.uppercase ? Qt.ShiftModifier : 0)
+        }
+        forceActiveFocus()
     }
 }

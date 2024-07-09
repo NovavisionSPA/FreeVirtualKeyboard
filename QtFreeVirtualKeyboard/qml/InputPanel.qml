@@ -6,6 +6,8 @@ import FreeVirtualKeyboard 1.0
 Item {
     id: root
     objectName: "inputPanel"
+    property var focusObj: null
+    property bool open: false
 
     property bool active: Qt.inputMethod.visible
 
@@ -30,6 +32,16 @@ Item {
     onActiveChanged: {
         if (alternativesKeyPopup.visible && !active) {
             alternativesKeyPopup.visible = false
+        }
+
+        if (!active) {
+            open = false
+        }
+    }
+
+    onOpenChanged: {
+        if (open) {
+            layoutLoader.item.setFocusfromLeft()
         }
     }
 
