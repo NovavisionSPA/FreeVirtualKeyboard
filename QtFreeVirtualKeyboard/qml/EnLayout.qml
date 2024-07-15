@@ -190,13 +190,21 @@ ColumnLayout {
             rightKey: enter
             leftKey: k
         }
-        EnterKey {
+        HideKey {
             id: enter
             weight: 283
             inputPanelRef: inputPanel
             rightKey: shiftLeft
             leftKey: l
+            btnDisplayedText: "Enter"
         }
+//        EnterKey {
+//            id: enter
+//            weight: 283
+//            inputPanelRef: inputPanel
+//            rightKey: shiftLeft
+//            leftKey: l
+//        }
     }
     RowLayout {
         property real keyWeight: 156

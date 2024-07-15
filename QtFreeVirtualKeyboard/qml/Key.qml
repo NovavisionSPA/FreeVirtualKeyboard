@@ -27,6 +27,7 @@ Button {
 
     property alias repeatable: key.autoRepeat
     property bool showPreview: true
+
     property bool functionKey: false
 
     property var rightKey
@@ -114,22 +115,21 @@ Button {
         }
     }
 
-    onReleased: {
-        inputPanel.focusObj.forceActiveFocus()
-        if (!functionKey) {
-            InputEngine.virtualKeyClick(
-                        btnKey, InputEngine.uppercase ? btnText.toUpperCase() : btnText,
-                        InputEngine.uppercase ? Qt.ShiftModifier : 0)
-        }
-    }
+    onReleased: clickVirtualKey(false)
 
-    Keys.onReleased: {
+    Keys.onPressed: clickVirtualKey(true)
+
+    function clickVirtualKey(doOnClick) {
         inputPanel.focusObj.forceActiveFocus()
+
         if (!functionKey) {
             InputEngine.virtualKeyClick(
                         btnKey, InputEngine.uppercase ? btnText.toUpperCase() : btnText,
                         InputEngine.uppercase ? Qt.ShiftModifier : 0)
+        } else if (doOnClick) {
+            onClicked()
         }
+
         forceActiveFocus()
     }
 }
