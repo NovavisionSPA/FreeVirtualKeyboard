@@ -42,6 +42,8 @@ Item {
     onOpenChanged: {
         if (open) {
             layoutLoader.item.setFocusfromLeft()
+        } else {
+            InputEngine.symbolMode = false
         }
     }
 
@@ -147,6 +149,8 @@ Item {
                 } else {
                     loadLettersLayout()
                 }
+
+                layoutLoader.item.setFocusfromLeft()
             }
 
             onInputModeChanged: refreshLayouts()

@@ -30,7 +30,7 @@ class DeclarativeInputEngine : public QObject
     Q_PROPERTY(QRect keyboardRectangle READ keyboardRectangle WRITE setKeyboardRectangle NOTIFY keyboardRectangleChanged FINAL)
     Q_PROPERTY(bool animating READ isAnimating WRITE setAnimating NOTIFY animatingChanged FINAL)
     Q_PROPERTY(int inputMode READ inputMode WRITE setInputMode NOTIFY inputModeChanged FINAL)
-    Q_PROPERTY(bool uppercase READ isUppercase WRITE setUppercase NOTIFY isUppercaseChanged)
+    Q_PROPERTY(bool uppercase READ uppercase WRITE setUppercase NOTIFY uppercaseChanged)
     Q_PROPERTY(bool symbolMode READ isSymbolMode WRITE setSymbolMode NOTIFY isSymbolModeChanged)
     // clang-format on
 
@@ -85,7 +85,7 @@ public:
      */
     void setInputMode(int Mode);
 
-    bool isUppercase() const;
+    bool uppercase() const;
     void setUppercase(bool uppercase);
 
     bool isSymbolMode() const;
@@ -122,7 +122,7 @@ signals:
      */
     void inputModeChanged();
 
-    void isUppercaseChanged();
+    void uppercaseChanged();
     void isSymbolModeChanged();
 
 private:

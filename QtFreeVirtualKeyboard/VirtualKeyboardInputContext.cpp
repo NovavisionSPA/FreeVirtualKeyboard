@@ -151,8 +151,8 @@ void VirtualKeyboardInputContext::setFocusObject(QObject *object)
         d->InputEngine->setUppercase(false);
     } else {
         d->InputEngine->setInputMode(DeclarativeInputEngine::Letters);
-        d->InputEngine->setSymbolMode(false);
-        d->InputEngine->setUppercase(false);
+//        d->InputEngine->setSymbolMode(false);
+//        d->InputEngine->setUppercase(false);
     }
 
     QQuickItem *i = d->FocusItem;

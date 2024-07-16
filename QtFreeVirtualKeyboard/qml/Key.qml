@@ -115,21 +115,19 @@ Button {
         }
     }
 
-    onReleased: clickVirtualKey(false)
+    onReleased: clickVirtualKey()
 
-    Keys.onPressed: clickVirtualKey(true)
+    Keys.onPressed: clickVirtualKey()
 
-    function clickVirtualKey(doOnClick) {
+    Keys.onReleased: onClicked()
+
+    function clickVirtualKey() {
         inputPanel.focusObj.forceActiveFocus()
-
         if (!functionKey) {
             InputEngine.virtualKeyClick(
                         btnKey, InputEngine.uppercase ? btnText.toUpperCase() : btnText,
                         InputEngine.uppercase ? Qt.ShiftModifier : 0)
-        } else if (doOnClick) {
-            onClicked()
         }
-
         forceActiveFocus()
     }
 }

@@ -196,7 +196,7 @@ ColumnLayout {
             inputPanelRef: inputPanel
             rightKey: shiftLeft
             leftKey: l
-            btnDisplayedText: "Enter"
+            btnDisplayedText: "ENTER"
         }
 //        EnterKey {
 //            id: enter

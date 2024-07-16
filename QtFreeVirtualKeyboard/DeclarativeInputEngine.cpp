@@ -19,7 +19,7 @@ struct DeclarativeInputEnginePrivate
     int InputMode;
     QRect KeyboardRectangle;
 
-    bool isUppercase{false};
+    bool uppercase{false};
     bool symbolMode{false};
 };
 
@@ -101,16 +101,16 @@ void DeclarativeInputEngine::setInputMode(int Mode)
     }
 }
 
-bool DeclarativeInputEngine::isUppercase() const
+bool DeclarativeInputEngine::uppercase() const
 {
-    return d->isUppercase;
+    return d->uppercase;
 }
 
 void DeclarativeInputEngine::setUppercase(bool uppercase)
 {
-    if (d->isUppercase != uppercase) {
-        d->isUppercase = uppercase;
-        emit isUppercaseChanged();
+    if (d->uppercase != uppercase) {
+        d->uppercase = uppercase;
+        emit uppercaseChanged();
     }
 }
 
