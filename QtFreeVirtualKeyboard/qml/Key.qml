@@ -33,6 +33,8 @@ Button {
     property var rightKey
     property var leftKey
 
+    property bool encoderLongPressed: false
+
     Keys.onRightPressed: rightKey.forceActiveFocus()
     Keys.onLeftPressed: leftKey.forceActiveFocus()
 
@@ -42,6 +44,7 @@ Button {
         } else {
             txtColor = "#00ff00"
         }
+        encoderLongPressed = false;
     }
 
     Layout.minimumWidth: key.implicitWidth
@@ -120,6 +123,14 @@ Button {
     Keys.onPressed: clickVirtualKey()
 
     Keys.onReleased: onClicked()
+
+    // MEMO: Menu è l'evento scelto arbitrariamente per corrispondere al long press dell'encoder
+    Keys.onMenuPressed: {
+        if (!encoderLongPressed && alternativeKeys.length > 0) {
+            inputPanelRef.showAlternativesKeyPopup(key)
+        }
+        encoderLongPressed = true;
+    }
 
     function clickVirtualKey() {
         inputPanel.focusObj.forceActiveFocus()

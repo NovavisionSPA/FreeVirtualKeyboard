@@ -30,16 +30,16 @@ Item {
 
     onYChanged: InputEngine.setKeyboardRectangle(Qt.rect(x, y, width, height))
     onActiveChanged: {
-        if (alternativesKeyPopup.visible && !active) {
-            alternativesKeyPopup.visible = false
-        }
-
         if (!active) {
+            if (alternativesKeyPopup.visible) {
+                alternativesKeyPopup.visible = false
+            }
             open = false
         }
     }
 
     onOpenChanged: {
+        appCore.keyboardOpen = open;
         if (open) {
             layoutLoader.item.setFocusfromLeft()
         } else {
