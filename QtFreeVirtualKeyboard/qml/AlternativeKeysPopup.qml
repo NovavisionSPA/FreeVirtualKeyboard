@@ -7,11 +7,13 @@ Item {
     id: root
 
     visible: false
+    property var key: null;
 
     property var alternativeKeys: []
 
     function open(keybutton, inputPanel) {
         alternativeKeys = keybutton.alternativeKeys
+        key = keybutton
 
         width = keybutton.width * 1 * alternativeKeys.length
         height = keybutton.height * 1.2
@@ -64,12 +66,33 @@ Item {
             }
             spacing: 1
             Repeater {
+                id: repeater
                 model: listModel
                 Key {
                     btnText: model.btnText
                     showPreview: false
                     weight: width
-                    onClicked: root.visible = false
+                    onClicked: {
+                        root.visible = false
+                        if (key != null) {
+                            key.forceActiveFocus()
+                        }
+                    }
+
+                    focus: index === 0
+                }
+
+                // assigns the correct left and right key to each button, enabling the use of the encoder
+                onItemAdded: {
+                    if (index !== 0) {
+                        item.leftKey = repeater.itemAt(index - 1)
+                        repeater.itemAt(index - 1).rightKey = item
+                    }
+
+                    if (index === listModel.count - 1) {
+                        item.rightKey = repeater.itemAt(0)
+                        repeater.itemAt(0).leftKey = item
+                    }
                 }
             }
         }
