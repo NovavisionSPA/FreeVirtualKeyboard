@@ -82,7 +82,7 @@ Item {
                     focus: index === 0
                 }
 
-                // assigns the correct left and right key to each button, enabling the use of the encoder
+                // MEMO: assigns the correct left and right key to each button, enabling the use of the encoder
                 onItemAdded: {
                     if (index !== 0) {
                         item.leftKey = repeater.itemAt(index - 1)
