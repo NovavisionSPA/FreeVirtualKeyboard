@@ -7,7 +7,7 @@ Item {
     id: root
     objectName: "inputPanel"
     property var focusObj: null
-    property bool open: false
+    property bool isDigitsKeyboard: false
 
     property bool active: Qt.inputMethod.visible
 
@@ -30,20 +30,13 @@ Item {
 
     onYChanged: InputEngine.setKeyboardRectangle(Qt.rect(x, y, width, height))
     onActiveChanged: {
+        appCore.keyboardOpen = active
         if (!active) {
             if (alternativesKeyPopup.visible) {
                 alternativesKeyPopup.visible = false
             }
-            open = false
-        }
-    }
-
-    onOpenChanged: {
-        appCore.keyboardOpen = open;
-        if (open) {
-            layoutLoader.item.setFocusfromLeft()
         } else {
-            InputEngine.symbolMode = false
+            setFocusOnFirstKeyTimer.start()
         }
     }
 
@@ -115,6 +108,19 @@ Item {
         z: 99
     }
 
+    // MEMO: it is necessary to wait a couple of ms before forcing the encoder focus
+    Timer {
+        id: setFocusOnFirstKeyTimer
+
+        interval: 300
+        repeat: false
+        running: false
+
+        onTriggered: {
+            layoutLoader.item.setFocusfromLeft()
+        }
+    }
+
     Rectangle {
         id: keyboardRect
 
@@ -128,6 +134,10 @@ Item {
         Loader {
             id: layoutLoader
 
+            onSourceChanged: {
+                setFocusOnFirstKeyTimer.start()
+            }
+
             anchors {
                 fill: parent
                 margins: 5
@@ -138,23 +148,27 @@ Item {
             target: InputEngine
 
             function refreshLayouts() {
+                isDigitsKeyboard = false
                 if (InputEngine.symbolMode) {
                     layoutLoader.setSource("SymbolLayout.qml", {
                                                "inputPanel": root
                                            })
                 } else if (InputEngine.inputMode === InputEngine.DigitsOnly) {
+                    isDigitsKeyboard = true
                     layoutLoader.setSource("DigitsLayout.qml", {
                                                "inputPanel": root
                                            })
                 } else {
                     loadLettersLayout()
                 }
-
-                layoutLoader.item.setFocusfromLeft()
             }
 
-            onInputModeChanged: refreshLayouts()
-            onIsSymbolModeChanged: refreshLayouts()
+            onInputModeChanged: {
+                refreshLayouts()
+            }
+            onIsSymbolModeChanged: {
+                refreshLayouts()
+            }
         }
     }
 }
