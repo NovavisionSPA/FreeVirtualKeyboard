@@ -19,6 +19,9 @@ Button {
     property color txtColor: InputPanel.btnTextColor
     property string txtFont: InputPanel.btnTextFontFamily
 
+    property color btnBackgroundBackup
+    property color txtColorBackup
+
     property string btnIcon: ""
 
     property var alternativeKeys: []
@@ -38,13 +41,23 @@ Button {
     Keys.onRightPressed: rightKey.forceActiveFocus()
     Keys.onLeftPressed: leftKey.forceActiveFocus()
 
+    Component.onCompleted: {
+        btnBackgroundBackup = btnBackground;
+        txtColorBackup = txtColor;
+    }
+
+
     onFocusChanged: {
-        if (focus) {
-            txtColor = "#ff0000"
-        } else {
-            txtColor = "#00ff00"
+        if (appCore.environmentManager.hasEncoder) {
+            if (focus) {
+                txtColor = "black"
+                btnBackground = "white"
+            } else {
+                txtColor = txtColorBackup
+                btnBackground = btnBackgroundBackup
+            }
+            encoderLongPressed = false;
         }
-        encoderLongPressed = false;
     }
 
     Layout.minimumWidth: key.implicitWidth

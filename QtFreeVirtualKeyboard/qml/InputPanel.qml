@@ -64,6 +64,12 @@ Item {
         }
     }
 
+    function setFocusOnFirstKey() {
+        if (appCore.environmentManager.hasEncoder) {
+            layoutLoader.item.setFocusfromLeft()
+        }
+    }
+
     onLanguageLayoutChanged: loadLettersLayout()
 
     Component.onCompleted: {
@@ -108,16 +114,16 @@ Item {
         z: 99
     }
 
-    // MEMO: it is necessary to wait a couple of ms before forcing the encoder focus
+    // MEMO: it is necessary to wait a couple of ms before forcing the focus for encoder abilitation
     Timer {
         id: setFocusOnFirstKeyTimer
 
-        interval: 300
+        interval: 100
         repeat: false
         running: false
 
         onTriggered: {
-            layoutLoader.item.setFocusfromLeft()
+            setFocusOnFirstKey()
         }
     }
 

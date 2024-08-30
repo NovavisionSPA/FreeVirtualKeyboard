@@ -78,8 +78,6 @@ Item {
                             key.forceActiveFocus()
                         }
                     }
-
-                    focus: index === 0
                 }
 
                 // MEMO: assigns the correct left and right key to each button, enabling the use of the encoder
@@ -92,6 +90,7 @@ Item {
                     if (index === listModel.count - 1) {
                         item.rightKey = repeater.itemAt(0)
                         repeater.itemAt(0).leftKey = item
+                        repeater.itemAt(0).forceActiveFocus()
                     }
                 }
             }
