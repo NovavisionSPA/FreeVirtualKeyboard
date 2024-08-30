@@ -307,7 +307,7 @@ ColumnLayout {
             id: space
             weight: 1168
             inputPanelRef: inputPanel
-            btnDisplayedText: "English"
+            btnDisplayedText: ""
             rightKey: apostrophe
             leftKey: symbol
         }
