@@ -36,7 +36,7 @@ Item {
                 alternativesKeyPopup.visible = false
             }
         } else {
-            setFocusOnFirstKeyTimer.start()
+            refreshLayouts()
         }
     }
 
@@ -67,6 +67,22 @@ Item {
     function setFocusOnFirstKey() {
         if (appCore.environmentManager.hasEncoder) {
             layoutLoader.item.setFocusfromLeft()
+        }
+    }
+
+    function refreshLayouts() {
+        isDigitsKeyboard = false
+        if (InputEngine.symbolMode) {
+            layoutLoader.setSource("SymbolLayout.qml", {
+                                       "inputPanel": root
+                                   })
+        } else if (InputEngine.inputMode === InputEngine.DigitsOnly) {
+            isDigitsKeyboard = true
+            layoutLoader.setSource("DigitsLayout.qml", {
+                                       "inputPanel": root
+                                   })
+        } else {
+            loadLettersLayout()
         }
     }
 
@@ -152,22 +168,6 @@ Item {
 
         Connections {
             target: InputEngine
-
-            function refreshLayouts() {
-                isDigitsKeyboard = false
-                if (InputEngine.symbolMode) {
-                    layoutLoader.setSource("SymbolLayout.qml", {
-                                               "inputPanel": root
-                                           })
-                } else if (InputEngine.inputMode === InputEngine.DigitsOnly) {
-                    isDigitsKeyboard = true
-                    layoutLoader.setSource("DigitsLayout.qml", {
-                                               "inputPanel": root
-                                           })
-                } else {
-                    loadLettersLayout()
-                }
-            }
 
             onInputModeChanged: {
                 refreshLayouts()
