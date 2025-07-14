@@ -3,7 +3,7 @@ QT += qml quick quick-private gui-private
 CONFIG += plugin
 
 TARGET = freevirtualkeyboardplugin
-TEMPLATE = lib
+TEMPLATE = plugin
 
 SOURCES += \
     EnterKeyAction.cpp \
