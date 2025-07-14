@@ -1,4 +1,4 @@
-TEMPLATE = subdirs
+TEMPLATE = lib
 
 SUBDIRS = QtFreeVirtualKeyboard
 
