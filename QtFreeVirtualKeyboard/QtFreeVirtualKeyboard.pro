@@ -2,8 +2,8 @@ QT += qml quick quick-private gui-private
 
 CONFIG += plugin
 
+TEMPLATE = lib
 TARGET = freevirtualkeyboardplugin
-TEMPLATE = plugin
 
 SOURCES += \
     EnterKeyAction.cpp \
@@ -20,7 +20,7 @@ HEADERS += \
     VirtualKeyboardInputContextPlugin.h \
     VirtualKeyboardInputContext.h \
     DeclarativeInputEngine.h
-
+b
 RESOURCES += \
     resources.qrc
 
