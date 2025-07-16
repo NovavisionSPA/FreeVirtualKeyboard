@@ -1,4 +1,4 @@
-QT += qml quick quick-private gui-private
+QT += core gui qml quick quick-private gui-private
 
 CONFIG += plugin
 
@@ -20,7 +20,7 @@ HEADERS += \
     VirtualKeyboardInputContextPlugin.h \
     VirtualKeyboardInputContext.h \
     DeclarativeInputEngine.h
-b
+
 RESOURCES += \
     resources.qrc
 
@@ -36,7 +36,9 @@ INSTALLS += \
 
 deployment.files = $$QML_FILES
 deployment.path = $$[QT_INSTALL_QML]/QtQuick/FreeVirtualKeyboard
+#deployment.path = $$[QT_INSTALL_QML]/FreeVirtualKeyboard
 target.path = $$[QT_INSTALL_PLUGINS]/platforminputcontexts
+#target.path = $$APP_DIR/lib
 
 #unix
 #{
